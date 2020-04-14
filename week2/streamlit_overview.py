@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def main():
     st.title('Hello World!')
@@ -33,9 +34,13 @@ def main():
     if multi is not None:
         st.markdown(multi)
 
-    fileup = st.file_uploader('Upload your file here', type='csv')
+    st.header('Importing a csv and ploting with Pandas')
+    fileup = st.file_uploader('Upload your file here')
     if fileup is not None:
-        st.markdown('File uploaded')
+        slider = st.slider('Range:', min_value=1, max_value=100)
+        df = pd.read_csv(fileup)
+        st.dataframe(df.head(slider))
+
 
 if __name__ == '__main__':
     main()
