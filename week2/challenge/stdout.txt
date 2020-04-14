@@ -1,0 +1,26 @@
+============================= test session starts =============================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- C:\Users\PC114\AppData\Local\Programs\Python\Python38\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\PC114\codenation\data-science-0
+collecting ... collected 10 items
+
+test_submit.py::test_q1 PASSED                                           [ 10%]
+test_submit.py::test_q2 PASSED                                           [ 20%]
+test_submit.py::test_q3 PASSED                                           [ 30%]
+test_submit.py::test_q4 PASSED                                           [ 40%]
+test_submit.py::test_q5 PASSED                                           [ 50%]
+test_submit.py::test_q6 PASSED                                           [ 60%]
+test_submit.py::test_q7 PASSED                                           [ 70%]
+test_submit.py::test_q8 PASSED                                           [ 80%]
+test_submit.py::test_q9 PASSED                                           [ 90%]
+test_submit.py::test_q10 PASSED                                          [100%]
+
+============================== warnings summary ===============================
+C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\junitxml.py:417
+  C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\junitxml.py:417: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0.
+  Add 'junit_family=xunit1' to your pytest.ini file to keep the current format in future versions of pytest and silence this warning.
+    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+--- generated xml file: C:\Users\PC114\codenation\data-science-0\output.xml ---
+======================== 10 passed, 1 warning in 1.20s ========================
