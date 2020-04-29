@@ -47,11 +47,11 @@ def q1():
 # 
 # Há quantas mulheres com idade entre 26 e 35 anos no dataset? Responda como um único escalar.
 
-# In[5]:
+# In[37]:
 
 
 def q2():
-    return black_friday[(black_friday['Gender']=='F') & (black_friday['Age']=='26-35')].shape[0]
+    return black_friday.query("Gender == 'F' & Age=='26-35'").shape[0]
 
 
 # ## Questão 3
@@ -104,11 +104,11 @@ def q6():
 # 
 # Qual o valor mais frequente (sem contar nulls) em `Product_Category_3`? Responda como um único escalar.
 
-# In[10]:
+# In[6]:
 
 
 def q7():
-    return int(black_friday['Product_Category_3'].dropna().mode())
+    return int(black_friday['Product_Category_3'].mode())
 
 
 # ## Questão 8
@@ -129,23 +129,23 @@ def q8():
 # 
 # Quantas ocorrências entre -1 e 1 inclusive existem da variáel `Purchase` após sua padronização? Responda como um único escalar.
 
-# In[113]:
+# In[10]:
 
 
 def q9():
     norm_purchase = (black_friday['Purchase']-black_friday['Purchase'].mean())/black_friday['Purchase'].std()
-    return norm_purchase.loc[(norm_purchase>-1) & (norm_purchase<1)].shape[0]
+    return int(norm_purchase.between(-1, 1).sum())
 
 
 # ## Questão 10
 # 
 # Podemos afirmar que se uma observação é null em `Product_Category_2` ela também o é em `Product_Category_3`? Responda com um bool (`True`, `False`).
 
-# In[104]:
+# In[11]:
 
 
 def q10():
-    isna_pc2 = black_friday.loc[(black_friday['Product_Category_2'].isna())]
-    isna_pc2_3 = isna_pc2.loc[(isna_pc2['Product_Category_3'].isna())]
-    return isna_pc2.shape[0] == isna_pc2_3.shape[0]
+    isna_pc2 = black_friday[(black_friday['Product_Category_2'].isna())]
+    isna_pc2_3 = isna_pc2['Product_Category_3'].isna().all().item()
+    return isna_pc2_3
 

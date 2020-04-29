@@ -23,4 +23,4 @@ C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\
 
 -- Docs: https://docs.pytest.org/en/latest/warnings.html
 --- generated xml file: C:\Users\PC114\codenation\data-science-0\output.xml ---
-======================== 10 passed, 1 warning in 1.20s ========================
+======================== 10 passed, 1 warning in 1.14s ========================

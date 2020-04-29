@@ -9,6 +9,11 @@
   </component>
   <component name="JupyterTrust" id="bdda7eb4-03f9-44ae-943b-1c452d7a580b" />
   <component name="ProjectId" id="1aXFrAaORRkhmjz8IdMxjTNJXEg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -24,6 +29,9 @@
       <option name="presentableId" value="Default" />
       <updated>1586886088455</updated>
       <workItem from="1586886091665" duration="686000" />
+      <workItem from="1586893091184" duration="68000" />
+      <workItem from="1587297847472" duration="35000" />
+      <workItem from="1587303550292" duration="43000" />
     </task>
     <servers />
   </component>
