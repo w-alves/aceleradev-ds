@@ -19,26 +19,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as sct
 import seaborn as sns
+import statsmodels.api as sm
 
 
 # In[2]:
 
 
-from IPython.core.pylabtools import figsize
-
-
-figsize(12, 8)
-
-sns.set()
-
-
-# In[3]:
-
-
 athletes = pd.read_csv("athletes.csv")
 
 
-# In[4]:
+# In[3]:
 
 
 def get_sample(df, col_name, n=100, seed=42):
@@ -74,7 +64,7 @@ def get_sample(df, col_name, n=100, seed=42):
 
 # ## Inicia sua análise a partir daqui
 
-# In[5]:
+# In[4]:
 
 
 athletes.head()
@@ -159,6 +149,14 @@ def q4():
 
 # > __Para as questão 5 6 e 7 a seguir considere todos testes efetuados ao nível de significância de 5%__.
 
+# In[5]:
+
+
+bra_height = athletes.query("nationality == 'BRA'").height.dropna()
+can_height = athletes.query("nationality == 'CAN'").height.dropna()
+usa_height = athletes.query("nationality == 'USA'").height.dropna()
+
+
 # ## Questão 5
 # 
 # Obtenha todos atletas brasileiros, norte-americanos e canadenses em `DataFrame`s chamados `bra`, `usa` e `can`,respectivamente. Realize um teste de hipóteses para comparação das médias das alturas (`height`) para amostras independentes e variâncias diferentes com a função `scipy.stats.ttest_ind()` entre `bra` e `usa`. Podemos afirmar que as médias são estatisticamente iguais? Responda com um boolean (`True` ou `False`).
@@ -167,12 +165,10 @@ def q4():
 
 
 def q5():
-    bra = athletes.query("nationality == 'BRA'").dropna()
-    usa = athletes.query("nationality == 'USA'").dropna()
-
     alpha = 0.05
-
-    return bool(sct.ttest_ind(bra.height, usa.height, equal_var=False).pvalue > alpha)
+    ttest = sct.ttest_ind(bra_height, usa_height, equal_var=False)
+    
+    return bool(ttest.pvalue > alpha)
 
 
 # ## Questão 6
@@ -183,12 +179,10 @@ def q5():
 
 
 def q6():
-    bra = athletes.query("nationality == 'BRA'").dropna()
-    can = athletes.query("nationality == 'CAN'").dropna()
-    
     alpha = 0.05
+    ttest = sct.ttest_ind(bra_height, can_height, equal_var=False)
     
-    return bool(sct.ttest_ind(bra.height, can.height, equal_var=False).pvalue > alpha)
+    return bool(ttest.pvalue > alpha)
 
 
 # ## Questão 7
@@ -199,10 +193,9 @@ def q6():
 
 
 def q7():
-    can_height = athletes.query("nationality == 'CAN'").height.dropna()
-    usa_height = athletes.query("nationality == 'USA'").height.dropna()
+    ttest=sct.ttest_ind(usa_height, can_height, equal_var=False)
     
-    return float(sct.ttest_ind(usa_height, can_height, equal_var=False).pvalue.round(8))
+    return float(ttest.pvalue.round(8))
 
 
 # __Para refletir__:
