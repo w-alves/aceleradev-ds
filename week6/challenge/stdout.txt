@@ -1,0 +1,24 @@
+============================= test session starts =============================
+platform win32 -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- C:\Users\PC114\AppData\Local\Programs\Python\Python38\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\PC114\codenation\data-science-3
+collecting ... collected 4 items
+
+test_submit.py::test_q1 PASSED                                           [ 25%]
+test_submit.py::test_q2 PASSED                                           [ 50%]
+test_submit.py::test_q3 PASSED                                           [ 75%]
+test_submit.py::test_q4 PASSED                                           [100%]
+
+============================== warnings summary ===============================
+C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\junitxml.py:417
+  C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\_pytest\junitxml.py:417: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0.
+  Add 'junit_family=xunit1' to your pytest.ini file to keep the current format in future versions of pytest and silence this warning.
+    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)
+
+C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\patsy\constraint.py:13
+  C:\Users\PC114\AppData\Local\Programs\Python\Python38\lib\site-packages\patsy\constraint.py:13: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.9 it will stop working
+    from collections import Mapping
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+--- generated xml file: C:\Users\PC114\codenation\data-science-3\output.xml ---
+======================== 4 passed, 2 warnings in 2.40s ========================
