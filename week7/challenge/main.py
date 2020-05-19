@@ -9,7 +9,7 @@
 
 # ## _Setup_ geral
 
-# In[148]:
+# In[1]:
 
 
 import pandas as pd
@@ -25,13 +25,13 @@ from sklearn.feature_extraction.text import (
 )
 
 
-# In[149]:
+# In[2]:
 
 
 countries = pd.read_csv("countries.csv")
 
 
-# In[150]:
+# In[3]:
 
 
 new_column_names = [
@@ -54,7 +54,7 @@ countries.head()
 
 # ## Inicia sua análise a partir daqui
 
-# In[151]:
+# In[4]:
 
 
 def format_countries(df):
@@ -70,14 +70,14 @@ def format_countries(df):
     return df
 
 
-# In[152]:
+# In[5]:
 
 
 countries = format_countries(countries)
 countries.head()
 
 
-# In[153]:
+# In[6]:
 
 
 countries.dtypes
@@ -87,7 +87,7 @@ countries.dtypes
 # 
 # Quais são as regiões (variável `Region`) presentes no _data set_? Retorne uma lista com as regiões únicas do _data set_ com os espaços à frente e atrás da string removidos (mas mantenha pontuação: ponto, hífen etc) e ordenadas em ordem alfabética.
 
-# In[154]:
+# In[7]:
 
 
 def q1():
@@ -98,14 +98,14 @@ def q1():
 # 
 # Discretizando a variável `Pop_density` em 10 intervalos com `KBinsDiscretizer`, seguindo o encode `ordinal` e estratégia `quantile`, quantos países se encontram acima do 90º percentil? Responda como um único escalar inteiro.
 
-# In[155]:
+# In[10]:
 
 
 def q2():
     discretizer = KBinsDiscretizer(n_bins=10, encode='ordinal', strategy='quantile')
     bin_pop_density = discretizer.fit_transform(countries[['Pop_density']])
         
-    return int(sum(bin_pop_density[:, 0] == 8))
+    return int(sum(bin_pop_density[:, 0] == 9))
 
 
 # ##  Questão 3
@@ -201,7 +201,7 @@ def q5():
 # No caso em questão, é improvável que haja erro na medição ou input dos dados, visto que é um dataset consolidado, compilado pelo governo dos Estados Unidos. Além disso, é nítido que os outliers não são externos à população que estamos estudando, pois assim como as demais observações, se tratam de países. 
 # 
 # Analisando sob um olhar mais crítico, há de se fazer a pergunta **"por tantos outliers?"** 
-# Bom, a coluna Net_migration trata sobre a rede de migração e, como explicado pelo geografia/demografia, pessoas migram, em linhas gerais, por _fatores repulsivos_ ou _fatores atrativos_. Então, devido a combinação específica desses fatores, é natural que existam países com **alta taxa imigratória**(ou seja, taxa líquida de migração muito positiva) e países com **alta taxa emigratória**(ou seja, taxa líquida de migração muito negativa).
+# Bom, a coluna Net migration trata sobre a rede de migração e, como explicado pelo geografia/demografia, pessoas migram, em linhas gerais, por _fatores repulsivos_ ou _fatores atrativos_. Então, devido a combinação específica desses fatores, é natural que existam países com **alta taxa imigratória**(ou seja, taxa líquida de migração muito positiva) e países com **alta taxa emigratória**(ou seja, taxa líquida de migração muito negativa).
 # Ademais, a própria taxa de migração é sensível a outliers pois tem como grandeza _saldo de migrantes por mil habitantes_ , "favorecendo" países de baixa população.
 # 
 
@@ -218,7 +218,7 @@ def q5():
 # 
 # Aplique `CountVectorizer` ao _data set_ `newsgroups` e descubra o número de vezes que a palavra _phone_ aparece no corpus. Responda como um único escalar.
 
-# In[165]:
+# In[14]:
 
 
 categories = ['sci.electronics', 'comp.graphics', 'rec.motorcycles']
@@ -238,18 +238,12 @@ def q6():
 # 
 # Aplique `TfidfVectorizer` ao _data set_ `newsgroups` e descubra o TF-IDF da palavra _phone_. Responda como um único escalar arredondado para três casas decimais.
 
-# In[181]:
+# In[23]:
 
 
 def q7():
-    count_vectorizer = CountVectorizer()
-    newsgroups_counts = count_vectorizer.fit_transform(newsgroups.data)
-    
-    tfidf_transformer = TfidfTransformer()
-    tfidf_transformer.fit(newsgroups_counts)
-    newsgroups_tfidf = tfidf_transformer.transform(newsgroups_counts)
-    
-    tdidf_matrix = pd.DataFrame(newsgroups_tfidf.toarray(), columns=np.array(count_vectorizer.get_feature_names()))
+    vectorizer = TfidfVectorizer().fit(newsgroups.data)
+    newsgroups_tfidf_vectorized = vectorizer.transform(newsgroups.data)
 
-    return float(round(tdidf_matrix['phone'].sum(), 3))
+    return float(round(newsgroups_tfidf_vectorized[:, vectorizer.vocabulary_['phone']].sum(), 3))
 
