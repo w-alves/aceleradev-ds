@@ -1,5 +1,7 @@
 # AceleraDev Data Science
 
+Just testing.
+
 This repository contains my challenges submissions and the lessons of the AceleraDev Data Science training program.
 
 ![Banner](https://s3-us-west-1.amazonaws.com/acceleration-assets-highway/ds-online-1/social-image.jpg)
