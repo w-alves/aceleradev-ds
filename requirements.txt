@@ -98,7 +98,7 @@ tornado==5.1.1
 traitlets==4.3.3
 typing==3.7.4.1
 tzlocal==2.0.0
-urllib3==1.24.2
+urllib3==1.26.5
 validators==0.14.3
 virtualenv==20.0.17
 virtualenv-clone==0.5.4
