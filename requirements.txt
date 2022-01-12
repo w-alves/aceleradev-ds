@@ -61,7 +61,7 @@ parso==0.6.2
 pathtools==0.1.2
 pickleshare==0.7.5
 Pillow==7.1.1
-pipenv==2018.11.26
+pipenv==2022.1.8
 prometheus-client==0.7.1
 prompt-toolkit==3.0.5
 protobuf==3.11.3
